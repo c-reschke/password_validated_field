@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:password_validated_field/password_validated_field.dart';
 
-
 /// Complete Simple Example
 class Example extends StatefulWidget {
   const Example({Key? key}) : super(key: key);
@@ -30,12 +29,12 @@ class _ExampleState extends State<Example> {
           children: [
             _validPassword
                 ? Text(
-                    "Password Valid!",
-                    style: TextStyle(fontSize: 22.0),
-                  )
+              "Password Valid!",
+              style: TextStyle(fontSize: 22.0),
+            )
                 : Container(),
             PasswordValidatedFields(), // password validated field from package
-            
+
             // Button to validate the form
             ElevatedButton(
                 onPressed: () {

@@ -1,11 +1,12 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:password_validated_field/src/requirement_widget.dart';
 
 class PasswordValidatedFields extends StatefulWidget {
-  
   /// Password `validation` is given at the bottom which can be `modified` accordingly.
   /// Full package can be modified easily
-  
 
   /// Input decoration of Text field by default it is OutlineInputBorder
   final InputDecoration? inputDecoration;
@@ -93,7 +94,6 @@ class _PasswordValidatedFieldsState extends State<PasswordValidatedFields> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-
           /// [Password TextFormField]
           /// Use `Form` to validate the field easily
           TextFormField(
@@ -122,36 +122,55 @@ class _PasswordValidatedFieldsState extends State<PasswordValidatedFields> {
           PassCheckRequirements(
             passCheck: _pass.contains(RegExp(r'[A-Z]')),
             requirementText: "1 Uppercase [A-Z]",
+            activeColor: widget.activeRequirementColor,
+            inActiveColor: widget.inActiveRequirementColor,
+            inActiveIcon: widget.inActiveIcon,
+            activeIcon: widget.activeIcon,
           ),
 
           /// `1 lowercase` requirement
           PassCheckRequirements(
             passCheck: _pass.contains(RegExp(r'[a-z]')),
             requirementText: "1 lowercase [a-z]",
+            activeColor: widget.activeRequirementColor,
+            inActiveColor: widget.inActiveRequirementColor,
+            inActiveIcon: widget.inActiveIcon,
+            activeIcon: widget.activeIcon,
           ),
 
           /// `1 numeric value` requirement
           PassCheckRequirements(
             passCheck: _pass.contains(RegExp(r'[0-9]')),
             requirementText: "1 numeric value [0-9]",
+            activeColor: widget.activeRequirementColor,
+            inActiveColor: widget.inActiveRequirementColor,
+            inActiveIcon: widget.inActiveIcon,
+            activeIcon: widget.activeIcon,
           ),
 
           /// `1 special character` requirement
           PassCheckRequirements(
             passCheck: _pass.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')),
             requirementText: "1 special character [#, \$, % etc..]",
+            activeColor: widget.activeRequirementColor,
+            inActiveColor: widget.inActiveRequirementColor,
+            inActiveIcon: widget.inActiveIcon,
+            activeIcon: widget.activeIcon,
           ),
 
           /// `6 character length` requirement
           PassCheckRequirements(
             passCheck: _pass.length >= 6,
             requirementText: "6 characters minimum",
+            activeColor: widget.activeRequirementColor,
+            inActiveColor: widget.inActiveRequirementColor,
+            inActiveIcon: widget.inActiveIcon,
+            activeIcon: widget.activeIcon,
           ),
         ],
       ),
     );
   }
-
 
   /// [password validation]
   /// 1 Uppercase
@@ -159,12 +178,14 @@ class _PasswordValidatedFieldsState extends State<PasswordValidatedFields> {
   /// 1 numeric value
   /// 1 special character
   /// 6 length password
-  
+
   /// In case you want to `modify` the requirements change the `RegExp` given below
   String? passwordValidation(String? value) {
     bool passValid =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$') /// [RegExp]
-            .hasMatch(value!);
+    RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,}$')
+
+    /// [RegExp]
+        .hasMatch(value!);
     if (value.isEmpty) {
       return "Password cannot be emtpy!";
     } else if (!passValid) {
